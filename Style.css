@@ -1,0 +1,26 @@
+#email {
+    
+}
+input{
+    
+}
+body{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+.wrapper>div{
+    display: flex;
+    flex-direction: column;
+}
+
+
