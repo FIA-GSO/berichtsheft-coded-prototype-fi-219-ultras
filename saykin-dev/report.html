@@ -88,8 +88,8 @@
                         </tr>
                         <tr id="monday-row-1" class="day-row">
                             <td><textarea name="monday-activity-1" id="monday-activity-1"></textarea></td>
-                            <td><input type="text" name="monday-work-hours-1" id="monday-work-hours-1"></td>
-                            <td><input type="text" name="monday-department-1" id="monday-department-1"></td>
+                            <td><input type="number" name="monday-work-hours-1" id="monday-work-hours-1" autocomplete="off" min="0.01"></td>
+                            <td><input type="text" name="monday-department-1" id="monday-department-1" autocomplete="off"></td>
                         </tr>
                     </table>
                 </div>
@@ -103,8 +103,8 @@
                         </tr>
                         <tr id="tuesday-row-1" class="day-row">
                             <td><textarea name="tuesday-activity-1" id="tuesday-activity-1"></textarea></td>
-                            <td><input type="text" name="tuesday-work-hours-1" id="tuesday-work-hours-1"></td>
-                            <td><input type="text" name="tuesday-department-1" id="tuesday-department-1"></td>
+                            <td><input type="number" name="tuesday-work-hours-1" id="tuesday-work-hours-1" autocomplete="off" min="0.01"></td>
+                            <td><input type="text" name="tuesday-department-1" id="tuesday-department-1" autocomplete="off"></td>
                         </tr>
                     </table>
                 </div>
@@ -118,8 +118,8 @@
                         </tr>
                         <tr id="wednesday-row-1" class="day-row">
                             <td><textarea name="wednesday-activity-1" id="wednesday-activity-1"></textarea></td>
-                            <td><input type="text" name="wednesday-work-hours-1" id="wednesday-work-hours-1"></td>
-                            <td><input type="text" name="wednesday-department-1" id="wednesday-department-1"></td>
+                            <td><input type="number" name="wednesday-work-hours-1" id="wednesday-work-hours-1" autocomplete="off" min="0.01"></td>
+                            <td><input type="text" name="wednesday-department-1" id="wednesday-department-1" autocomplete="off"></td>
                         </tr>
                     </table>
                 </div>
@@ -133,8 +133,8 @@
                         </tr>
                         <tr id="thursday-row-1" class="day-row">
                             <td><textarea name="thursday-activity-1" id="thursday-activity-1"></textarea></td>
-                            <td><input type="text" name="thursday-work-hours-1" id="thursday-work-hours-1"></td>
-                            <td><input type="text" name="thursday-department-1" id="thursday-department-1"></td>
+                            <td><input type="number" name="thursday-work-hours-1" id="thursday-work-hours-1" autocomplete="off" min="0.01"></td>
+                            <td><input type="text" name="thursday-department-1" id="thursday-department-1" autocomplete="off"></td>
                         </tr>
                     </table>
         
@@ -149,8 +149,8 @@
                         </tr>
                         <tr id="friday-row-1" class="day-row">
                             <td><textarea name="friday-activity-1" id="friday-activity-1"></textarea></td>
-                            <td><input type="text" name="friday-work-hours-1" id="friday-work-hours-1"></td>
-                            <td><input type="text" name="friday-department-1" id="friday-department-1"></td>
+                            <td><input type="number" name="friday-work-hours-1" id="friday-work-hours-1" autocomplete="off" min="0.01"></td>
+                            <td><input type="text" name="friday-department-1" id="friday-department-1" autocomplete="off"></td>
                         </tr>
                     </table>
                 </div>   
@@ -238,15 +238,15 @@
             <div class="grid-2-1">
                 <div class="wrapper text-wrapper">
                     <label for="day-activity">Tätigkeit</label>
-                    <textarea name="day-activity" id="day-activity"></textarea>
+                    <textarea name="day-activity" id="day-activity" autocomplete="off"></textarea>
                 </div>
                 <div class="wrapper number-wrapper">
                     <label for="day-work-hours">Stunden</label>
-                    <input type="text" name="day-work-hours" id="day-work-hours">
+                    <input type="number" name="day-work-hours" id="day-work-hours" autocomplete="off" min="0.01">
                 </div>
                 <div class="wrapper text-wrapper">
                     <label for="day-department">Abteilung</label>
-                    <input type="text" name="day-department" id="day-department">
+                    <input type="text" name="day-department" id="day-department" autocomplete="off">
                 </div>
             </div>
 
@@ -259,21 +259,21 @@
 
 
 <script id="table-row-template" type="text/template">
-    <tr id="DD-row-number" class="day-row">
-        <td><textarea name="DD-activity-number" id="DD-activity-number"></textarea></td>
-        <td><input type="text" name="DD-work-hours-number" id="DD-work-hours-number"></td>
-        <td><input type="text" name="DD-department-number" id="DD-department-number"></td>
+    <tr id="DD-row-integer" class="day-row">
+        <td><textarea name="DD-activity-integer" id="DD-activity-integer"></textarea></td>
+        <td><input type="number" name="DD-work-hours-integer" id="DD-work-hours-integer" autocomplete="off" min="0.01"></td>
+        <td><input type="text" name="DD-department-integer" id="DD-department-integer" autocomplete="off"></td>
     </tr>
 </script>
 
 <script id="mobile-row-template" type="text/template">
-    <div id="DD-content-number" class="DD-content-box">
+    <div id="DD-content-integer" class="DD-content-box">
         <strong>Tätigkeit (Day)</strong>
-        <span id="DD-activity-span-number"></span>
+        <span id="DD-activity-span-integer"></span>
         <strong>Stunden</strong>
-        <span id="DD-work-hours-span-number"></span>
+        <span id="DD-work-hours-span-integer"></span>
         <strong>Abteilung</strong>
-        <span id="DD-department-span-number"></span>
+        <span id="DD-department-span-integer"></span>
     </div>
 </script>
 
