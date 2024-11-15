@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .logo-container img {
+        margin: 10px;
+        height: 100px;
+    }
+
+    .easter-egg {
+        display: none;
+    }
+
+    #login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #login-wrapper div {
+        width: 100%;
+        max-width: 200px;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #login-wrapper button {
+        margin: 10px;
+    }
+
+    #login-wrapper a {
+        margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+    <main>
+        <from id="login-wrapper" method="POST">
+            <div class="logo-container">
+                <img src="logo-handelskammer-png-data.svg" class="logo" />
+                <img src="https://media.tenor.com/D5NiHel4xxIAAAAj/whattt.gif" alt="omegalul" class="easter-egg">
+            </div>
+            <div>
+                <label for="email">Email-Adresse:</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div>
+                <label for="password">Passwort:</label>
+                <input type="text" name="password" id="password">
+            </div>
+            <button id ="login">Login</button>
+            <a id ="passwort" href="#">Passwort vergessen</a>
+        </from>
+
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            $('#login').click(function(event) {
+                event.preventDefault();
+                $('.logo').hide();
+                $('.easter-egg').show();
+                setTimeout(function() {
+                    $('.easter-egg').hide();
+                    $('.logo').show();
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

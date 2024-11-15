@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Berichtsheft</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="logo-handelskammer-png-data.svg"/>
+    </header>
+
+    <div class="nav-main-grid">
+        <nav>
+            <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+            <div class="nav-links">
+                <a href="#" class="highlight">Homepage</a>
+                <a href="#">Alle Berichte</a>
+                <a href="#">Neuen Bericht erstellen</a>
+                <a href="#">Infos zur Ausbildung</a>
+            </div>
+        </nav>
+    
+        <main>
+            <form id="report-wrapper" action="" method="POST">
+    
+                <div class="grid-2-1">
+    
+                    <div class="wrapper text-wrapper">
+                        <label for="name">Name des Auszubildenen</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+    
+                    <div class="wrapper text-wrapper">
+                        <label for="email">E-Mail des Auszubildenen</label>
+                        <input type="text" name="email" id="email" required>
+                    </div>
+    
+                    <div class="wrapper number-wrapper">
+                        <label for="year">Ausbildungsjahr</label>
+                        <input type="number" name="year" id="year" step="1" min="1" max="4" required>
+                    </div>
+    
+                    <div class="wrapper text-wrapper">
+                        <label for="department">Abteilung</label>
+                        <input type="text" name="department" id="department" required>
+                    </div>
+    
+                    <div class="grid-2 grid-span-2">
+                        <div class="wrapper date-wrapper">
+                            <label for="date-from">Woche von</label>
+                            <input type="date" name="date_from" id="date-from" required>
+                        </div>
+                        <div class="wrapper date-wrapper">
+                            <label for="date-to">Bis</label>
+                            <input type="date" name="date_to" id="date-to" required>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="grid-2-1">
+    
+                    <select name="show_day" id="show-day">
+                        <option value="0">Alle Tage</option>
+                        <option value="1" selected>Montag</option>
+                        <option value="2">Dienstag</option>
+                        <option value="3">Mittwoch</option>
+                        <option value="4">Donnerstag</option>
+                        <option value="5">Freitag</option>
+                    </select>
+    
+                    <select name="template" id="template">
+                        <option value="0" selected>Wähle ein Template</option>
+                    </select>
+    
+                </div>
+    
+                <hr>
+    
+                <button id="new-entry-top" class="new-entry" type="button">Neuer Eintrag</button>
+    
+                <div class="desktop-element">
+    
+                    <div class="day-content monday-content">
+                        <table id="t-monday" class="day-table">
+                            <tr>
+                                <th>Tätigkeit (Montag)</th>
+                                <th>Std.</th>
+                                <th>Abteilung</th>
+                            </tr>
+                            <tr id="monday-row-1" class="day-row">
+                                <td><textarea name="monday-activity-1" id="monday-activity-1"></textarea></td>
+                                <td><input type="number" name="monday-work-hours-1" id="monday-work-hours-1" autocomplete="off" min="0.01"></td>
+                                <td><input type="text" name="monday-department-1" id="monday-department-1" autocomplete="off"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="day-content tuesday-content">
+                        <table id="t-tuesday" class="day-table">
+                            <tr>
+                                <th>Tätigkeit (Dienstag)</th>
+                                <th>Std.</th>
+                                <th>Abteilung</th>
+                            </tr>
+                            <tr id="tuesday-row-1" class="day-row">
+                                <td><textarea name="tuesday-activity-1" id="tuesday-activity-1"></textarea></td>
+                                <td><input type="number" name="tuesday-work-hours-1" id="tuesday-work-hours-1" autocomplete="off" min="0.01"></td>
+                                <td><input type="text" name="tuesday-department-1" id="tuesday-department-1" autocomplete="off"></td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    <div class="day-content wednesday-content">
+                        <table id="t-wednesday" class="day-table">
+                            <tr>
+                                <th>Tätigkeit (Mittwoch)</th>
+                                <th>Std.</th>
+                                <th>Abteilung</th>
+                            </tr>
+                            <tr id="wednesday-row-1" class="day-row">
+                                <td><textarea name="wednesday-activity-1" id="wednesday-activity-1"></textarea></td>
+                                <td><input type="number" name="wednesday-work-hours-1" id="wednesday-work-hours-1" autocomplete="off" min="0.01"></td>
+                                <td><input type="text" name="wednesday-department-1" id="wednesday-department-1" autocomplete="off"></td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    <div class="day-content thursday-content">
+                        <table id="t-thursday" class="day-table">
+                            <tr>
+                                <th>Tätigkeit (Donnerstag)</th>
+                                <th>Std.</th>
+                                <th>Abteilung</th>
+                            </tr>
+                            <tr id="thursday-row-1" class="day-row">
+                                <td><textarea name="thursday-activity-1" id="thursday-activity-1"></textarea></td>
+                                <td><input type="number" name="thursday-work-hours-1" id="thursday-work-hours-1" autocomplete="off" min="0.01"></td>
+                                <td><input type="text" name="thursday-department-1" id="thursday-department-1" autocomplete="off"></td>
+                            </tr>
+                        </table>
+            
+                    </div>
+    
+                    <div class="day-content friday-content">
+                        <table id="t-friday" class="day-table">
+                            <tr>
+                                <th>Tätigkeit (Freitag)</th>
+                                <th>Std.</th>
+                                <th>Abteilung</th>
+                            </tr>
+                            <tr id="friday-row-1" class="day-row">
+                                <td><textarea name="friday-activity-1" id="friday-activity-1"></textarea></td>
+                                <td><input type="number" name="friday-work-hours-1" id="friday-work-hours-1" autocomplete="off" min="0.01"></td>
+                                <td><input type="text" name="friday-department-1" id="friday-department-1" autocomplete="off"></td>
+                            </tr>
+                        </table>
+                    </div>   
+                                 
+                </div>
+    
+                <div class="mobile-element">
+    
+                    <div class="day-content monday-content">
+                        <div id="monday-content-1" class="monday-content-box">
+                            <strong>Tätigkeit (Montag)</strong>
+                            <span id="monday-activity-span-1"></span>
+                            <strong>Stunden</strong>
+                            <span id="monday-work-hours-span-1"></span>
+                            <strong>Abteilung</strong>
+                            <span id="monday-department-span-1"></span>
+                        </div>
+                    </div>
+    
+                    <div class="day-content tuesday-content">
+                        <div id="tuesday-content-1" class="tuesday-content-box">
+                            <strong>Tätigkeit (Dienstag)</strong>
+                            <span id="tuesday-activity-span-1"></span>
+                            <strong>Stunden</strong>
+                            <span id="tuesday-work-hours-span-1"></span>
+                            <strong>Abteilung</strong>
+                            <span id="tuesday-department-span-1"></span>
+                        </div>
+                    </div>
+    
+                    <div class="day-content wednesday-content">
+                        <div id="wednesday-content-1" class="wednesday-content-box">
+                            <strong>Tätigkeit (Mittwoch)</strong>
+                            <span id="wednesday-activity-span-1"></span>
+                            <strong>Stunden</strong>
+                            <span id="wednesday-work-hours-span-1"></span>
+                            <strong>Abteilung</strong>
+                            <span id="wednesday-department-span-1"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-content thursday-content">
+                        <div id="thursday-content-1" class="thursday-content-box">
+                            <strong>Tätigkeit (Donnerstag)</strong>
+                            <span id="thursday-activity-span-1"></span>
+                            <strong>Stunden</strong>
+                            <span id="thursday-work-hours-span-1"></span>
+                            <strong>Abteilung</strong>
+                            <span id="thursday-department-span-1"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-content friday-content">
+                        <div id="friday-content-1" class="friday-content-box">
+                            <strong>Tätigkeit (Freitag)</strong>
+                            <span id="friday-activity-span-1"></span>
+                            <strong>Stunden</strong>
+                            <span id="friday-work-hours-span-1"></span>
+                            <strong>Abteilung</strong>
+                            <span id="friday-department-span-1"></span>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <button id="new-entry-bottom" class="new-entry" type="button">Neuer Eintrag</button>
+
+                <div class="wrapper button-wrapper">
+                    <button type="submit" class="b-save-draft" name="save_draft" value="save_draft">Zwischenspeichern</button>
+                    <button type="submit" class="b-save-and-new" name="save_and_new" value="save_and_new">Speichern und neu</button>
+                    <button type="submit" class="b-cancel" name="cancel" value="cancel">Abbrechen</button>
+                    <button type="submit" name="b_save" value="b_save">Speichern</button>
+                </div>
+    
+            </form>
+        </main>
+    </div>
+
+    <div id="day-edit-popup" style="display: none;">
+        <div id="day-edit-popup-content">
+            <div id="day-edit-popup-header">
+                <h2>Eintrag bearbeiten</h2>
+                <button id="close-day-edit-popup">X</button>
+            </div>
+        
+            <div class="grid-2-1">
+                <div class="wrapper text-wrapper">
+                    <label for="day-activity">Tätigkeit</label>
+                    <textarea name="day-activity" id="day-activity" autocomplete="off"></textarea>
+                </div>
+                <div class="wrapper number-wrapper">
+                    <label for="day-work-hours">Stunden</label>
+                    <input type="number" name="day-work-hours" id="day-work-hours" autocomplete="off" min="0.01">
+                </div>
+                <div class="wrapper text-wrapper">
+                    <label for="day-department">Abteilung</label>
+                    <input type="text" name="day-department" id="day-department" autocomplete="off">
+                </div>
+            </div>
+
+            <div id="day-edit-popup-footer">
+                <button id="save-day-edit">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var links = document.querySelector('.nav-links');
+            links.classList.toggle('active');
+        }
+    </script>
+
+    <script id="table-row-template" type="text/template">
+        <tr id="DD-row-integer" class="day-row">
+            <td><textarea name="DD-activity-integer" id="DD-activity-integer"></textarea></td>
+            <td><input type="number" name="DD-work-hours-integer" id="DD-work-hours-integer" autocomplete="off" min="0.01"></td>
+            <td><input type="text" name="DD-department-integer" id="DD-department-integer" autocomplete="off"></td>
+        </tr>
+    </script>
+    
+    <script id="mobile-row-template" type="text/template">
+        <div id="DD-content-integer" class="DD-content-box">
+            <strong>Tätigkeit (Day)</strong>
+            <span id="DD-activity-span-integer"></span>
+            <strong>Stunden</strong>
+            <span id="DD-work-hours-span-integer"></span>
+            <strong>Abteilung</strong>
+            <span id="DD-department-span-integer"></span>
+        </div>
+    </script>
+</body>
+</html>
