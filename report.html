@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berichtsheft</title>
     <link href="style.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -15,12 +16,36 @@
 
     <div class="nav-main-grid">
         <nav>
-            <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+            <div class="burger-menu" onclick="openNav()">&#9776;</div>
             <div class="nav-links">
                 <a href="#" class="highlight">Homepage</a>
                 <a href="#">Alle Berichte</a>
-                <a href="#">Neuen Bericht erstellen</a>
+                <a href="#" class="active">Neuen Bericht erstellen</a>
                 <a href="#">Infos zur Ausbildung</a>
+            </div>
+
+            <div id="nav-overlay" class="overlay">
+
+                <!-- Button to close the overlay navigation -->
+                <div id="overlay-close-container">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                </div>
+
+                <div class="overlay-content">
+                    <a href="#" class="">Homepage</a>
+                </div>
+              
+                <!-- Overlay content -->
+                <div class="overlay-content">
+                    <a href="#">Alle Berichte</a>
+                    <a href="#" class="active">Neuen Bericht erstellen</a>
+                    <a href="#">Infos zur Ausbildung</a>
+                </div>
+
+                <div class="overlay-content">
+                    <a href="#" class="">Hilfe</a>
+                </div>
+              
             </div>
         </nav>
     
@@ -262,13 +287,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function toggleMenu() {
-            var links = document.querySelector('.nav-links');
-            links.classList.toggle('active');
-        }
-    </script>
 
     <script id="table-row-template" type="text/template">
         <tr id="DD-row-integer" class="day-row">

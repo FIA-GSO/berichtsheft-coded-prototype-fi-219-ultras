@@ -63,8 +63,25 @@ $(document).ready(function() {
 // Utility functions
 function autoResize(event) {
     const textarea = event.target;
+    const textareaID = textarea.id;
+    const idArray = textareaID.split('-');
+    const day = idArray[0];
+
+    let number;
+    if (idArray.length === 4) {
+        number = idArray[3];
+    } else {
+        number = idArray[2];
+    }
+
+    const workHoursElement = $('#' + day + '-work-hours-' + number);
+    const departmentElement = $('#' + day + '-department-' + number);
+
     textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    const height = textarea.scrollHeight;
+    textarea.style.height = height + 'px';
+    workHoursElement.css('height', height + 'px');
+    departmentElement.css('height', height + 'px');
 }
 
 function getSelectedDay() {
@@ -108,7 +125,7 @@ function addRow() {
     const number = getNextRowNumber();
 
     if (number > 10) {
-        alert('You can only add up to 10 entries per day');
+        alert('Sie können nur bis zu 10 Einträge für jeden Tag hinzufügen.');
         return;
     }
 
@@ -197,4 +214,12 @@ function saveDayRow() {
     mobileContent.find('#' + editingDay + '-activity-span-' + editingNumber).text(activity);
     mobileContent.find('#' + editingDay + '-work-hours-span-' + editingNumber).text(hours);
     mobileContent.find('#' + editingDay + '-department-span-' + editingNumber).text(department);
+}
+
+function openNav() {
+    document.getElementById("nav-overlay").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("nav-overlay").style.width = "0%";
 }
