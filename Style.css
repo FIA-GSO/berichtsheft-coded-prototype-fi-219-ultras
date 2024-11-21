@@ -1,3 +1,46 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+input[type="color"],
+input[type="range"],
+input[type="file"],
+textarea,
+select {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="search"]:focus,
+input[type="color"]:focus,
+input[type="range"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+
+
 header {
     position: relative;
     padding-top: 20px;
@@ -130,6 +173,7 @@ button:disabled {
     display: flex;
     flex-direction: row;
     justify-content: end;
+    margin-top: 20px;
 }
 
 .day-table {
@@ -187,16 +231,26 @@ button:disabled {
     gap: 20px;
 }
 
+.mobile-element .day-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .mobile-element .day-content > div {
     display: flex;
     flex-direction: column;
     gap: 4px;
     background: #decece;
     padding: 8px;
-    margin-bottom: 13px;
     border: 1px solid #cacaca;
-    border-radius: 8px;
     cursor: pointer;
+}
+
+.mobile-element .day-content span {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Popup styles for smartphones */
@@ -263,8 +317,9 @@ button:disabled {
 
 @media screen and (max-width: 768px) {
     .burger-menu {
-        display: block; /* Show burger menu on smaller screens */
+        display: flex;
         width: 44px;
+        justify-content: center;
     }
 
     nav {
@@ -283,6 +338,7 @@ button:disabled {
 
     .nav-main-grid {
         grid-template-columns: 1fr;
+        margin: 20px;
     }
 }
 
@@ -303,7 +359,9 @@ button:disabled {
         display: none;
     }
     .mobile-element {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
     #day-edit-popup {
@@ -312,12 +370,78 @@ button:disabled {
 
     .button-wrapper {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 }
 
 @media screen and (min-width: 601px) {
     .mobile-element {
         display: none;
+    }
+}
+
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 51, 102); /* Black fallback color */
+    background-color: rgba(0, 51, 102, 0.95); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    width: 100%; /* 100% width */   
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+.overlay-content:not(:last-child) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+#overlay-close-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    padding-right: 20px;
+    border-bottom: 1px solid white;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    font-size: 35px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
     }
 }
