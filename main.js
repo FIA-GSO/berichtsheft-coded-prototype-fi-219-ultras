@@ -136,7 +136,17 @@ function addRow() {
     const mobileRowTemplate = $('#mobile-row-template').html();
     const container = $('.mobile-element .' + selectedDay + '-content');
 
-    const newMobileRow = mobileRowTemplate.replace(/DD/g, selectedDay).replace(/integer/g, number).replace(/Day/g, selectedDay.charAt(0).toUpperCase() + selectedDay.slice(1));
+    const dayNames = {
+        monday: 'Montag',
+        tuesday: 'Dienstag',
+        wednesday: 'Mittwoch',
+        thursday: 'Donnerstag',
+        friday: 'Freitag',
+        saturday: 'Samstag',
+        sunday: 'Sonntag'
+    };
+
+    const newMobileRow = mobileRowTemplate.replace(/DD/g, selectedDay).replace(/integer/g, number).replace(/Day/g, dayNames[selectedDay]);
 
     table.append(newRow);
     container.append(newMobileRow);
